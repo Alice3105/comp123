@@ -1,0 +1,103 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.Json;
+using System.IO;
+using System.Runtime.Remoting.Messaging;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static List<int> intNum = new List<int>();
+        static void Main(string[] args)
+        {
+            WriteFile("list-num.txt");
+            List<int> allNum = new List<int>();
+            //Display list of all nums
+            allNum = ReadFile("list-num.txt");
+            //Display average of the list
+            Console.WriteLine($"The Average is {CalculateTheAverage(allNum):F2}");
+        }
+
+        static void WriteFile(string fileName)
+        {
+            TextWriter writer = new StreamWriter(fileName);
+            //Generate random number
+            Random ranNumberGenerator = new Random();
+            //Write 10 random numbers into the text file
+            for (int i = 0; i <= 10; ++i)
+            {
+                int randomNumber = ranNumberGenerator.Next(0, 100);
+                writer.Write(randomNumber + "\n");
+            }
+            writer.Close();
+        }
+        
+        static List<int> ReadFile(string fileName)
+        {
+            TextReader reader = new StreamReader(fileName);
+            try
+            {
+                string line = reader.ReadLine();
+                if (line != null)
+                {
+                    while (line != null) {
+                        Console.WriteLine(line);
+                        line = reader.ReadLine();
+                        int num = Convert.ToInt32(line);
+                        intNum.Add(num);
+                    }
+                }
+                else
+                {
+                    throw new Exception("File is empty");
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine(ex.ToString() + "\n");
+                Console.WriteLine("File cannot be found!");
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString() + "\n");
+                Console.WriteLine("An exception occurs when the file is read!");
+            }
+
+            finally { 
+                reader.Close();
+            }
+            return intNum;
+        }
+
+        public static double CalculateTheAverage(List<int> intNum)
+        {
+            double sum = 0, average = 0;
+            for (int i = 0;i < intNum.Count;i++)
+            {
+                sum += intNum[i];
+                try
+                {
+                    average = sum / intNum.Count;
+                }
+
+                catch (DivideByZeroException ex)
+                {
+                    Console.WriteLine(ex.ToString() + "\n");
+                    Console.WriteLine("Division by zero!");
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString() + "\n");
+                    Console.WriteLine("An exception occurs when the average is calculated!");
+                }
+            }
+            return average;
+        }
+    }
+}

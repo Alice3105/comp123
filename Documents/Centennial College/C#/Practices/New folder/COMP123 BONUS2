@@ -1,0 +1,74 @@
+//Paste code below in Main() to test
+            List<Plane> planes = new List<Plane>();
+            planes.Add(new Plane("BOEING", "707-300", 189 , "LandPlane", "BOEING 707-300"));
+            planes.Add(new Plane("LOCKHEED", "L-1011 TriStar", 256, "LandPlane", "L-1011-385-1"));
+            planes.Add(new Plane("SPRATT", "Spratt Controlwing 107", 1, "SeaPlane", "Model 107"));
+            planes.Add(new Plane("BELL-BOEING", "901 Osprey", 24, "Tiltrotor", "Bell Boeing V-22"));
+            planes.Add(new Plane("USTINOV", "Adel", 1, "Gyrocopter", "USTINOV Adel"));
+            
+            foreach(Plane plane in planes)
+            {
+                Console.WriteLine(plane.ToString()+"\n");
+            }
+
+            Random ranNumberGenerator = new Random();
+            List<int> randomNumbers = new List<int>();
+            for(int i =0; i <planes.Count; ++i)
+            {
+                randomNumbers.Add(ranNumberGenerator.Next(1, 300));
+            }
+           
+            for (int i =0; i<planes.Count; ++i)
+            {
+                Console.WriteLine($"The number of passenger(s) is/are {randomNumbers[i]}. " +
+                    $"Does the {planes[i].Model} has enough capacity? " +
+                    $"{(planes[i].HasCapacity(randomNumbers[i]) ? "Yes" : "No")} \n");
+            }
+ //Class Plane
+internal class Plane
+    {
+        public string Manufactory { get;set; }
+        public string Model { get;set; }
+        public int Capacity { get;set; }
+        public string Type { get;set; }
+        public string SerialNumber { get;set; }
+
+        public Plane()
+        {
+            Manufactory = "Unknown";
+            Model = "Unknown";
+            Capacity = 0;
+            Type = "Unassgined";
+            SerialNumber = "00000";
+        }
+
+        public Plane (string manufactory, string model, int capacity, string type, string serialNumber)
+        {
+            Manufactory = manufactory;
+            Model = model;
+            Capacity = capacity;
+            Type = type;
+            SerialNumber = serialNumber;
+        }
+
+        public bool HasCapacity(int numPeople)
+        {
+            bool value = true;
+            if(numPeople <= Capacity)
+            {
+                value= true;
+            }
+             
+            if (numPeople > Capacity)
+            {
+                value= false;
+            }
+
+            return value;
+        }
+
+        public  override string ToString()
+        {
+            return $"Manufactory: {Manufactory}, Model: {Model}, Capacity:{Capacity}, Type:{Type}, Serial Number: {SerialNumber}";
+        }
+    }

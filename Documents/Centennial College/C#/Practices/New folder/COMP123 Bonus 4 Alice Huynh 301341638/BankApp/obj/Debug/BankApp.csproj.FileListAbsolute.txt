@@ -1,0 +1,8 @@
+C:\Users\alice\Documents\Centennial College\C#\Practices\New folder\BankApp\BankApp\bin\Debug\BankApp.exe.config
+C:\Users\alice\Documents\Centennial College\C#\Practices\New folder\BankApp\BankApp\bin\Debug\BankApp.exe
+C:\Users\alice\Documents\Centennial College\C#\Practices\New folder\BankApp\BankApp\bin\Debug\BankApp.pdb
+C:\Users\alice\Documents\Centennial College\C#\Practices\New folder\BankApp\BankApp\obj\Debug\BankApp.csproj.AssemblyReference.cache
+C:\Users\alice\Documents\Centennial College\C#\Practices\New folder\BankApp\BankApp\obj\Debug\BankApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\alice\Documents\Centennial College\C#\Practices\New folder\BankApp\BankApp\obj\Debug\BankApp.csproj.CoreCompileInputs.cache
+C:\Users\alice\Documents\Centennial College\C#\Practices\New folder\BankApp\BankApp\obj\Debug\BankApp.exe
+C:\Users\alice\Documents\Centennial College\C#\Practices\New folder\BankApp\BankApp\obj\Debug\BankApp.pdb
